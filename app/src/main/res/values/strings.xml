@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">ShareMeal</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Mulai Berbagi</string>
+    <string name="onboarding_desc_1">Selamat datang! Bergabunglah dalam misi kami untuk mengakhiri kelaparan bersama.</string>
+
+    <string name="onboarding_title_2">Cara Donasi yang Mudah</string>
+    <string name="onboarding_desc_2">Donasi pangan hanya dalam beberapa ketukan. Bantu sesama dengan cara sederhana.</string>
+
+    <string name="onboarding_title_3">Bergabunglah, Kita Satu Tim!</string>
+    <string name="onboarding_desc_3">Bergabunglah dengan komunitas kami untuk berbagi makanan dan membantu sesama.</string>
+
+    <string name="onboarding_next">Selanjutnya</string>
+    <string name="onboarding_back">Kembali</string>
+    <string name="onboarding_finish">Mulai</string>
+
+    <!-- Login -->
+    <string name="login_title">Masuk</string>
+
+    <string name="login_username">Username</string>
+    <string name="login_username_hint">Masukkan username...</string>
+    <string name="login_password">Password</string>
+    <string name="login_password_hint">********</string>
+    <string name="login_btn">Masuk</string>
+
+    <string name="login_register_text">Belum punya akun?</string>
+    <string name="login_register_daftar">Daftar</string>
+
+    <!-- Menus -->
+
+    <!-- Bottom Nav (Main) -->
+    <string name="bottom_nav_home">Beranda</string>
+    <string name="bottom_nav_riwayat">Riwayat</string>
+    <string name="bottom_nav_donasi">Donasi</string>
+    <string name="bottom_nav_notifikasi">Notifikasi</string>
+    <string name="bottom_nav_profil">Profil</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
