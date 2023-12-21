@@ -17,6 +17,9 @@
 
     <!-- Login -->
     <string name="login_title">Masuk</string>
+    <string name="login_subtitle">
+        Selamat datang! Silahkan masuk untuk melanjutkan.
+    </string>
 
     <string name="login_username">Username</string>
     <string name="login_username_hint">Masukkan username...</string>
@@ -26,6 +29,18 @@
 
     <string name="login_register_text">Belum punya akun?</string>
     <string name="login_register_daftar">Daftar</string>
+
+    <!-- Register -->
+    <string name="register_title">Daftar</string>
+    <string name="register_subtitle">
+        Silahkan daftar untuk mulai berbagi makanan dan membantu sesama.
+    </string>
+
+    <string name="register_btn">Daftar</string>
+
+
+    <string name="register_login_text">Sudah punya akun?</string>
+    <string name="register_login_masuk">Masuk</string>
 
     <!-- Menus -->
 

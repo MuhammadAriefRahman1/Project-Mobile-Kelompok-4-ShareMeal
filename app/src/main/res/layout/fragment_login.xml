@@ -17,14 +17,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView_login_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/figtree_bold"
-            android:text="@string/login_title"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
+
+            <TextView
+                android:id="@+id/textView_login_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/figtree_bold"
+                android:text="@string/login_title"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/textView_login_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/figtree_medium"
+                android:text="@string/login_subtitle"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
 
         <View
             android:id="@+id/imageView_onboarding1"
@@ -55,9 +74,11 @@
 
                 <EditText
                     android:id="@+id/et_login_username"
+                    style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="4dp"
+                    android:autofillHints="username"
                     android:hint="@string/login_username_hint"
                     android:inputType="text" />
 
@@ -79,15 +100,18 @@
 
                 <EditText
                     android:id="@+id/et_login_password"
+                    style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="4dp"
+                    android:autofillHints="password"
                     android:hint="@string/login_password_hint"
-                    android:inputType="text" />
+                    android:inputType="textPassword" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/btn_login"
+                style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"

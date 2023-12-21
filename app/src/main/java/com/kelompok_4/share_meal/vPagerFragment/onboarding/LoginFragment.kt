@@ -6,26 +6,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.FragmentLoginBinding
+
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+
+        ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         binding = FragmentLoginBinding.bind(view)
 
+        // Set status bar color
+        activity?.window?.statusBarColor = ContextCompat.getColor(
+            requireActivity(),
+            R.color.white
+        )
+
         binding.textViewLoginRegister.setOnClickListener {
             findNavController()
                 .navigate(R.id.action_loginFragment_to_registerFragment)
+                .also {
+                    // Remove loginFragment from back stack
+                    findNavController().popBackStack()
+                }
         }
 
         binding.btnLogin.setOnClickListener {
