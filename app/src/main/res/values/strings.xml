@@ -25,6 +25,7 @@
     <string name="login_username_hint">Masukkan username...</string>
     <string name="login_password">Password</string>
     <string name="login_password_hint">********</string>
+
     <string name="login_btn">Masuk</string>
 
     <string name="login_register_text">Belum punya akun?</string>
@@ -36,8 +37,16 @@
         Silahkan daftar untuk mulai berbagi makanan dan membantu sesama.
     </string>
 
-    <string name="register_btn">Daftar</string>
+    <string name="register_nama_lengkap">Nama Lengkap</string>
+    <string name="register_nama_lengkap_hint">Masukkan nama lengkap...</string>
+    <string name="register_username">Username</string>
+    <string name="register_username_hint">Masukkan username...</string>
+    <string name="register_password">Password</string>
+    <string name="register_password_hint">********</string>
+    <string name="register_confirm_password">Konfirmasi Password</string>
+    <string name="register_confirm_password_hint">********</string>
 
+    <string name="register_btn">Daftar</string>
 
     <string name="register_login_text">Sudah punya akun?</string>
     <string name="register_login_masuk">Masuk</string>
