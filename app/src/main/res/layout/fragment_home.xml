@@ -4,26 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSurface"
-    tools:context=".vPagerFragment.home.HomeFragment">
+    tools:context=".home.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="HOME SCRENN BI" />
-
-    <Button
-        android:id="@+id/DEV_btn_home_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DEV: LOGOUT" />
-
-    <Button
-        android:id="@+id/DEV_btn_home_clearpref"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="DEV: CLEAR PREFERENCE" />
 
 
 </FrameLayout>
