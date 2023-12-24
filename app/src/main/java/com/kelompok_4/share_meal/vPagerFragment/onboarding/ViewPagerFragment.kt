@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.FragmentViewPagerBinding
@@ -37,6 +38,11 @@ class ViewPagerFragment : Fragment() {
         )
 
         binding.viewPager.adapter = adapter
+
+        activity?.window?.statusBarColor = ContextCompat.getColor(
+            requireActivity(),
+            R.color.white
+        )
 
         return view
     }

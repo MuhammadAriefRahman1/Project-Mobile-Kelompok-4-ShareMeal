@@ -10,7 +10,6 @@ import com.kelompok_4.share_meal.vPagerFragment.home.pages.DonasiFragment
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
-    private lateinit var homeFragment: HomeFragment
 
     //     lateinit var riwayatFragment: RiwayatFragment
     lateinit var donasiFragment: DonasiFragment
@@ -23,10 +22,9 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNavigationViewMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
-                    homeFragment = HomeFragment()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainerView2, homeFragment)
+                        .replace(R.id.fragmentContainerView2, HomeFragment())
                         .commit()
 
                     return@setOnItemSelectedListener true
@@ -47,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
                         .beginTransaction()
                         .replace(R.id.fragmentContainerView2, donasiFragment)
                         .commit()
-                    
+
                     return@setOnItemSelectedListener true
                 }
 
@@ -76,5 +74,10 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
 
+        // Close the app
+        finish()
+    }
 }

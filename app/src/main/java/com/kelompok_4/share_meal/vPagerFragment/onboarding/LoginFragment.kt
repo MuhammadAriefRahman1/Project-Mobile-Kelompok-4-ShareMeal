@@ -1,6 +1,6 @@
 package com.kelompok_4.share_meal.vPagerFragment.onboarding
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.FragmentLoginBinding
+import com.kelompok_4.share_meal.vPagerFragment.home.HomeActivity
 
 
 class LoginFragment : Fragment() {
@@ -35,17 +36,15 @@ class LoginFragment : Fragment() {
         binding.textViewLoginRegister.setOnClickListener {
             findNavController()
                 .navigate(R.id.action_loginFragment_to_registerFragment)
-                .also {
-                    // Remove loginFragment from back stack
-                    findNavController().popBackStack()
-                }
         }
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.etLoginUsername.text.toString()
-            val password = binding.etLoginPassword.text.toString()
+            val fields = listOf(
+                binding.etLoginUsername.text.toString(),
+                binding.etLoginPassword.text.toString(),
+            )
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (fields.any { it.isNullOrEmpty() }) {
                 Toast.makeText(
                     activity,
                     "Please fill all the fields",
@@ -62,24 +61,16 @@ class LoginFragment : Fragment() {
             }
 
             // Navigate to HomeActivity
-            login(username, password)
+            if ((activity as OnboardingActivity).auth()) {
+                val intent = Intent(activity, HomeActivity::class.java)
+                startActivity(intent)
+
+                (activity as OnboardingActivity).finish()
+            }
+
         }
 
         return view
     }
 
-    private fun login(username: String, password: String) {
-        val sharedPreferences = requireActivity()
-            .getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
-
-        val editor = sharedPreferences.edit()
-
-        editor.putBoolean("isLoggedIn", true)
-
-        editor.apply()
-
-        // Navigate to HomeActivity
-        findNavController()
-            .navigate(R.id.action_loginFragment_to_mainActivity2)
-    }
 }

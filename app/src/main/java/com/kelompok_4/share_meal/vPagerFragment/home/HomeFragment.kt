@@ -1,12 +1,13 @@
 package com.kelompok_4.share_meal.vPagerFragment.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import com.kelompok_4.share_meal.MainActivity
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.FragmentHomeBinding
 
@@ -30,8 +31,9 @@ class HomeFragment : Fragment() {
 
             editor.apply()
 
-            findNavController()
-                .navigate(R.id.action_homeFragment_to_mainActivity3)
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            (activity as HomeActivity).finish()
         }
 
         binding.DEVBtnHomeClearpref.setOnClickListener {
@@ -41,8 +43,9 @@ class HomeFragment : Fragment() {
             editor.clear()
             editor.apply()
 
-            findNavController()
-                .navigate(R.id.action_homeFragment_to_mainActivity3)
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            (activity as HomeActivity).finish()
         }
 
         return view

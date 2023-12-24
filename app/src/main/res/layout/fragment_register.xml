@@ -7,11 +7,10 @@
     android:background="@color/white"
     tools:context=".vPagerFragment.onboarding.RegisterFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,133 +19,205 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp">
-
-            <TextView
-                android:id="@+id/textView_register_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/figtree_bold"
-                android:text="@string/register_title"
-                android:textColor="@color/black"
-                android:textSize="32sp" />
-
-            <TextView
-                android:id="@+id/textView_register_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/figtree_medium"
-                android:text="@string/register_subtitle"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/imageView_onboarding1"
-            android:layout_width="196dp"
-            android:layout_height="196dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/colorPrimary" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:orientation="vertical"
-            android:paddingHorizontal="24dp">
+            android:paddingVertical="24dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/figtree_medium"
-                    android:text="@string/register_username"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/et_register_username"
-                    style="@style/BaseInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:autofillHints="username"
-                    android:hint="@string/register_username_hint"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/figtree_medium"
-                    android:text="@string/register_password"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/et_register_password"
-                    style="@style/BaseInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:autofillHints="password"
-                    android:hint="@string/register_password_hint"
-                    android:inputType="textPassword" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_register"
-                style="@style/Button"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/figtree_bold"
-                android:text="@string/register_btn" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp">
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp">
 
                 <TextView
+                    android:id="@+id/textView_register_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/figtree_medium"
-                    android:text="@string/register_login_text"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView_register_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
                     android:fontFamily="@font/figtree_bold"
-                    android:text="@string/register_login_masuk"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp" />
+                    android:text="@string/register_title"
+                    android:textColor="@color/black"
+                    android:textSize="32sp" />
 
+                <TextView
+                    android:id="@+id/textView_register_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="@string/register_subtitle"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/imageView_onboarding1"
+                android:layout_width="196dp"
+                android:layout_height="196dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@color/colorPrimary" />
+
+
+            <!-- START: Akun Section -->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_medium"
+                        android:text="@string/register_nama_lengkap"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_register_nama_lengkap"
+                        style="@style/BaseInput"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:autofillHints="username"
+                        android:hint="@string/register_nama_lengkap_hint"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_medium"
+                        android:text="@string/register_username"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_register_username"
+                        style="@style/BaseInput"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:autofillHints="username"
+                        android:hint="@string/register_username_hint"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_medium"
+                        android:text="@string/register_password"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_register_password"
+                        style="@style/BaseInput"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:autofillHints="password"
+                        android:hint="@string/register_password_hint"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_medium"
+                        android:text="@string/register_confirm_password"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_register_confirm_password"
+                        style="@style/BaseInput"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:hint="@string/register_confirm_password_hint"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- END: Akun Section -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_register"
+                    style="@style/Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="@string/register_btn" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_medium"
+                        android:text="@string/register_login_text"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView_register_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:fontFamily="@font/figtree_bold"
+                        android:text="@string/register_login_masuk"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
