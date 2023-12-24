@@ -1,4 +1,4 @@
-package com.kelompok_4.share_meal.vPagerFragment.home.pages
+package com.kelompok_4.share_meal.home.pages
 
 import android.os.Bundle
 import android.view.LayoutInflater

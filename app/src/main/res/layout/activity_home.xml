@@ -5,7 +5,8 @@
     android:id="@+id/home_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vPagerFragment.home.HomeActivity">
+    tools:context=".home.HomeActivity">
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
@@ -19,6 +20,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/home_nav" />
+
+    <Button
+        android:id="@+id/DEV_btn_home_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:onClick="DEBUGLogout"
+        android:text="DEV: LOGOUT"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView_main"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/DEV_btn_home_clearpref"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:alpha="0.5"
+        android:onClick="DEBUGClearSharedPreferences"
+        android:text="DEV: CLEAR PREFERENCE"
+        app:layout_constraintBottom_toTopOf="@id/DEV_btn_home_logout"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView_main"

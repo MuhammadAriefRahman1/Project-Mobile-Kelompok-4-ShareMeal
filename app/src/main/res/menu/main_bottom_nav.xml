@@ -2,24 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
+        android:title="@string/bottom_nav_home"
         android:icon="@drawable/ic_home"
-        android:title="@string/bottom_nav_home" />
+         />
 
     <item
         android:id="@+id/nav_riwayat"
-        android:icon="@drawable/ic_riwayat"
+        android:icon="@drawable/ic_history"
         android:title="@string/bottom_nav_riwayat" />
     <item
         android:id="@+id/nav_donasi"
-        android:icon="@drawable/ic_donasi"
+        android:icon="@drawable/ic_donation"
         android:title="@string/bottom_nav_donasi" />
     <item
         android:id="@+id/nav_notifikasi"
-        android:icon="@drawable/ic_notifikasi"
+        android:icon="@drawable/ic_notifications"
         android:title="@string/bottom_nav_notifikasi" />
     <item
         android:id="@+id/nav_profil"
-        android:icon="@drawable/ic_profil"
+        android:icon="@drawable/ic_person"
         android:title="@string/bottom_nav_profil" />
 
 </menu>

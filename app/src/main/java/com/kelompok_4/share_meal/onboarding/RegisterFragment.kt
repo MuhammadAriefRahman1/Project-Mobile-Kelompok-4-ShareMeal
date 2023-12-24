@@ -1,4 +1,4 @@
-package com.kelompok_4.share_meal.vPagerFragment.onboarding
+package com.kelompok_4.share_meal.onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.FragmentRegisterBinding
-import com.kelompok_4.share_meal.vPagerFragment.home.HomeActivity
+import com.kelompok_4.share_meal.home.HomeActivity
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding

@@ -1,4 +1,4 @@
-package com.kelompok_4.share_meal.vPagerFragment.onboarding
+package com.kelompok_4.share_meal.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.FragmentViewPagerBinding
+import com.kelompok_4.share_meal.onboarding.pagerFragments.Onboarding1Fragment
+import com.kelompok_4.share_meal.onboarding.pagerFragments.Onboarding2Fragment
+import com.kelompok_4.share_meal.onboarding.pagerFragments.Onboarding3Fragment
 import com.kelompok_4.share_meal.vPagerFragment.ViewPagerAdapter
-import com.kelompok_4.share_meal.vPagerFragment.onboarding.pagerFragments.Onboarding1Fragment
-import com.kelompok_4.share_meal.vPagerFragment.onboarding.pagerFragments.Onboarding2Fragment
-import com.kelompok_4.share_meal.vPagerFragment.onboarding.pagerFragments.Onboarding3Fragment
 
 class ViewPagerFragment : Fragment() {
     private lateinit var binding: FragmentViewPagerBinding

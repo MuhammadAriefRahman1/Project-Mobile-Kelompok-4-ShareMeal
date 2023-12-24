@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.kelompok_4.share_meal.vPagerFragment.onboarding.SplashScreenFragment"
+        android:name="com.kelompok_4.share_meal.onboarding.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.kelompok_4.share_meal.vPagerFragment.onboarding.ViewPagerFragment"
+        android:name="com.kelompok_4.share_meal.onboarding.ViewPagerFragment"
         android:label="fragment_view_pager"
         tools:layout="@layout/fragment_view_pager">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.kelompok_4.share_meal.vPagerFragment.onboarding.LoginFragment"
+        android:name="com.kelompok_4.share_meal.onboarding.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.kelompok_4.share_meal.vPagerFragment.onboarding.RegisterFragment"
+        android:name="com.kelompok_4.share_meal.onboarding.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action

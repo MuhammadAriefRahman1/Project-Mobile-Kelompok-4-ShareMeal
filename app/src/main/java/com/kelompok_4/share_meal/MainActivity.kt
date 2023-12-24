@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.kelompok_4.share_meal.vPagerFragment.home.HomeActivity
-import com.kelompok_4.share_meal.vPagerFragment.onboarding.OnboardingActivity
+import com.kelompok_4.share_meal.home.HomeActivity
+import com.kelompok_4.share_meal.onboarding.OnboardingActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

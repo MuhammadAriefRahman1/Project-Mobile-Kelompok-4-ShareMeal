@@ -1,11 +1,14 @@
-package com.kelompok_4.share_meal.vPagerFragment.home
+package com.kelompok_4.share_meal.home
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.kelompok_4.share_meal.MainActivity
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.ActivityHomeBinding
-import com.kelompok_4.share_meal.vPagerFragment.home.pages.DonasiFragment
+import com.kelompok_4.share_meal.home.pages.DonasiFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -18,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.bottomNavigationViewMain.setOnItemSelectedListener {
             when (it.itemId) {
@@ -78,6 +82,30 @@ class HomeActivity : AppCompatActivity() {
         super.onBackPressed()
 
         // Close the app
+        finish()
+    }
+
+    fun DEBUGLogout() {
+        val sharedPreferences =
+            getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", false)
+
+        editor.apply()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun DEBUGClearSharedPreferences() {
+        val sharedPreferences = getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
         finish()
     }
 }

@@ -1,4 +1,4 @@
-package com.kelompok_4.share_meal.vPagerFragment.onboarding
+package com.kelompok_4.share_meal.onboarding
 
 import android.content.Context
 import android.os.Bundle
