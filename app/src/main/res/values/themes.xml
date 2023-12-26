@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Base.Theme.ProjectMobileKelompok4ShareMeal" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -22,10 +22,20 @@
         <item name="android:textSize">14sp</item>
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:gravity">center</item>
-        <item name="background">@drawable/edit_text_bg</item>
+        <item name="background">@drawable/border_bottom</item>
         <item name="android:backgroundTint">@color/colorPrimary</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Small</item>
     </style>
+
+    <style name="OutlinedRoundedCornersInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+    </style>
+
 
     <!--    Change default EditText styles -->
     <style name="BaseInput" parent="Widget.Material3.TextInputEditText.OutlinedBox">
@@ -36,7 +46,7 @@
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:paddingVertical">0dp</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@drawable/edit_text_bg</item>
+        <item name="android:background">@drawable/border_bottom</item>
     </style>
 
 
