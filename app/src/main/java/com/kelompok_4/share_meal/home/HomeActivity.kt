@@ -3,6 +3,7 @@ package com.kelompok_4.share_meal.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kelompok_4.share_meal.MainActivity
@@ -13,14 +14,11 @@ import com.kelompok_4.share_meal.home.pages.DonasiFragment
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
-
-    //     lateinit var riwayatFragment: RiwayatFragment
-    lateinit var donasiFragment: DonasiFragment
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         binding.bottomNavigationViewMain.setOnItemSelectedListener {
@@ -44,10 +42,9 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_donasi -> {
-                    donasiFragment = DonasiFragment()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainerView2, donasiFragment)
+                        .replace(R.id.fragmentContainerView2, DonasiFragment())
                         .commit()
 
                     return@setOnItemSelectedListener true
@@ -85,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-    fun DEBUGLogout() {
+    fun DEBUGLogout(view: View?) {
         val sharedPreferences =
             getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -98,7 +95,7 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-    fun DEBUGClearSharedPreferences() {
+    fun DEBUGClearSharedPreferences(view: View?) {
         val sharedPreferences = getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.clear()

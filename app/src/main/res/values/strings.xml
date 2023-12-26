@@ -60,6 +60,10 @@
     <string name="bottom_nav_notifikasi">Notifikasi</string>
     <string name="bottom_nav_profil">Profil</string>
 
+    <!-- Screens -->
+    <!-- Donasi -->
+    <string name="donasi_title">Daftar Donasi</string>
+
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

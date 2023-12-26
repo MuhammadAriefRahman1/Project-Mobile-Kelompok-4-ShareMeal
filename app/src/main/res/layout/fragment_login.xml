@@ -110,6 +110,35 @@
                     android:inputType="textPassword" />
             </LinearLayout>
 
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:fontFamily="@font/figtree_medium"-->
+            <!--                    android:text="@string/login_password"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="14sp" />-->
+
+            <!--                <com.google.android.material.textfield.TextInputLayout-->
+            <!--                    style="@style/OutlinedRoundedCornersInput"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content">-->
+
+            <!--                    <com.google.android.material.textfield.TextInputEditText-->
+            <!--                        style="@style/OutlinedRoundedCornersInput"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:hint="@string/login_password_hint"-->
+            <!--                        android:inputType="textPassword" />-->
+
+            <!--                </com.google.android.material.textfield.TextInputLayout>-->
+            <!--            </LinearLayout>-->
+
             <Button
                 android:id="@+id/btn_login"
                 style="@style/Button"
