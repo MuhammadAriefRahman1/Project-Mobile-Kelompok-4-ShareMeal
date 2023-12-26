@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "444518014013",
+    "project_id": "kelompok4-sharemeal",
+    "storage_bucket": "kelompok4-sharemeal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444518014013:android:d5747feaf79611ec9d9e54",
+        "android_client_info": {
+          "package_name": "com.kelompok_4.share_meal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxUIugqpi942O9PR71ibeZMjvCjPfwPoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
