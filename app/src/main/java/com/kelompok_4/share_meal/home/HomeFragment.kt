@@ -17,9 +17,12 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
         binding = FragmentHomeBinding.bind(view)
 
+        // Set the status bar color
+        activity?.window?.statusBarColor = activity?.getColor(R.color.white)!!
+
+        // Return the fragment view/layout
         return view
     }
 

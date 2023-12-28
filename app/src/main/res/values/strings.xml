@@ -61,6 +61,11 @@
     <string name="bottom_nav_profil">Profil</string>
 
     <!-- Screens -->
+    <!-- Home  -->
+    <string name="home_greeting">
+        Selamat datang di ShareMeal. Mulailah berbagi makanan dan membantu sesama.
+    </string>
+
     <!-- Donasi -->
     <string name="donasi_title">Daftar Donasi</string>
 

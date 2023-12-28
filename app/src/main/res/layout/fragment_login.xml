@@ -73,13 +73,15 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+
                 <EditText
                     android:id="@+id/et_login_username"
                     style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:autofillHints="username"
+                    android:background="@drawable/bordered_input"
                     android:hint="@string/login_username_hint"
                     android:inputType="text" />
 
@@ -104,8 +106,9 @@
                     style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:autofillHints="password"
+                    android:background="@drawable/bordered_input"
                     android:hint="@string/login_password_hint"
                     android:inputType="textPassword" />
             </LinearLayout>
@@ -141,12 +144,13 @@
 
             <Button
                 android:id="@+id/btn_login"
-                style="@style/Button"
+                style="@style/BaseButton"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/figtree_bold"
-                android:text="@string/login_btn" />
+                android:text="@string/login_btn"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small" />
 
 
             <LinearLayout

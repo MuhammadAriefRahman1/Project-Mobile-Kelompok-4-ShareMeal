@@ -10,6 +10,7 @@ import com.kelompok_4.share_meal.MainActivity
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.ActivityHomeBinding
 import com.kelompok_4.share_meal.home.pages.DonasiFragment
+import com.kelompok_4.share_meal.home.pages.ProfilFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -60,11 +61,11 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_profil -> {
-                    Toast.makeText(
-                        this,
-                        "Profile",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainerView2, ProfilFragment())
+                        .commit()
+
                     return@setOnItemSelectedListener true
                 }
 

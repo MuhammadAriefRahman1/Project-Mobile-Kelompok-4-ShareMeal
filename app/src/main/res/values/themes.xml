@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ProjectMobileKelompok4ShareMeal" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">#1F5649</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/black</item>
@@ -16,15 +16,24 @@
     </style>
 
     <!--    Change default button styles -->
-    <style name="Button" parent="Widget.Material3.Button">
+    <style name="BaseButton" parent="Widget.Material3.Button">
         <item name="android:fontFamily">@font/figtree_bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:gravity">center</item>
-        <item name="background">@drawable/border_bottom</item>
-        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">@drawable/primary_button</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Small</item>
+    </style>
+
+    <style name="TransparentButton" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardPreventCornerOverlap">false</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="contentPaddingBottom">12dp</item>
+        <item name="contentPaddingTop">12dp</item>
     </style>
 
     <style name="OutlinedRoundedCornersInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -38,7 +47,7 @@
 
 
     <!--    Change default EditText styles -->
-    <style name="BaseInput" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+    <style name="BaseInput" parent="Widget.AppCompat.EditText">
         <item name="android:fontFamily">@font/figtree_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_height">48dp</item>

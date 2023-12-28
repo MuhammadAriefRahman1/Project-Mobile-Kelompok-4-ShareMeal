@@ -1,17 +1,22 @@
 package com.kelompok_4.share_meal.home.pages.donasi
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.kelompok_4.share_meal.databinding.LayoutListOpenDonasiBinding
+import com.kelompok_4.share_meal.databinding.LayoutDonasiListOpenDonasiBinding
 import com.kelompok_4.share_meal.home.pages.donasi.data.OpenDonasiList
+import com.kelompok_4.share_meal.home.pages.donasi.data.openDonasiListDummy
 
 class DonasiRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: List<OpenDonasiList> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
-            LayoutListOpenDonasiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            LayoutDonasiListOpenDonasiBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return DonasiViewHolder(binding)
     }
 
@@ -35,7 +40,7 @@ class DonasiRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         items = list
     }
 
-    class DonasiViewHolder(val binding: LayoutListOpenDonasiBinding) :
+    class DonasiViewHolder(val binding: LayoutDonasiListOpenDonasiBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         val donasiNama = binding.tvDonationName
@@ -51,11 +56,13 @@ class DonasiRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 
         fun onClick(donasi: OpenDonasiList) {
-            Toast.makeText(
-                itemView.context,
-                "Membuka donasi ${donasi.nama}",
-                Toast.LENGTH_SHORT
-            ).show()
+            val intent = Intent(itemView.context, DetailDonasiActivity::class.java)
+            intent.putExtra("donasi_id", donasi.id)
+            itemView.context.startActivity(intent)
         }
+    }
+
+    fun getDonasiById(id: String): OpenDonasiList {
+        return openDonasiListDummy.find { it.id == id }!!
     }
 }

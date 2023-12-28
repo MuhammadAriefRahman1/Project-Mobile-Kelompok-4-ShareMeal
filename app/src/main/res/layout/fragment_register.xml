@@ -87,8 +87,10 @@
                         android:id="@+id/et_register_nama_lengkap"
                         style="@style/BaseInput"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="4dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
                         android:autofillHints="username"
+                        android:background="@drawable/bordered_input"
                         android:hint="@string/register_nama_lengkap_hint"
                         android:inputType="text" />
 
@@ -113,8 +115,10 @@
                         android:id="@+id/et_register_username"
                         style="@style/BaseInput"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="4dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
                         android:autofillHints="username"
+                        android:background="@drawable/bordered_input"
                         android:hint="@string/register_username_hint"
                         android:inputType="text" />
 
@@ -139,8 +143,10 @@
                         android:id="@+id/et_register_password"
                         style="@style/BaseInput"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="4dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
                         android:autofillHints="password"
+                        android:background="@drawable/bordered_input"
                         android:hint="@string/register_password_hint"
                         android:inputType="textPassword" />
                 </LinearLayout>
@@ -163,7 +169,9 @@
                         android:id="@+id/et_register_confirm_password"
                         style="@style/BaseInput"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="4dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bordered_input"
                         android:hint="@string/register_confirm_password_hint"
                         android:inputType="textPassword" />
                 </LinearLayout>
@@ -180,9 +188,9 @@
 
                 <Button
                     android:id="@+id/btn_register"
-                    style="@style/Button"
+                    style="@style/BaseButton"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/figtree_bold"
                     android:text="@string/register_btn" />

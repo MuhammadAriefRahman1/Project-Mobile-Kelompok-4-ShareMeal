@@ -18,6 +18,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="128dp"
             android:layout_height="92dp"
+            app:cardElevation="3dp"
             app:rippleColor="@android:color/transparent"
             app:strokeWidth="0dp">
 

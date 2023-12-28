@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,10 +27,7 @@ class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
         binding = FragmentDonasiBinding.bind(donasiView)
 
         // Set status bar color
-        activity?.window?.statusBarColor = ContextCompat.getColor(
-            requireActivity(),
-            R.color.white
-        )
+        activity?.window?.statusBarColor = activity?.getColor(R.color.white)!!
 
         // Search Bar
         binding.teDonasiSearch.addTextChangedListener {
