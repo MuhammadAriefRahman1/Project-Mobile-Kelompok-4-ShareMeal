@@ -1,11 +1,13 @@
 package com.kelompok_4.share_meal.home
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.kelompok_4.share_meal.MainActivity
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.ActivityHomeBinding
@@ -83,17 +85,31 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-    fun DEBUGLogout(view: View?) {
-        val sharedPreferences =
-            getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("isLoggedIn", false)
+    fun logout(view: View?) {
+        // Show a confirmation dialog
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Apakah anda yakin ingin logout?")
+        builder.setPositiveButton("Ya") { _, _ ->
+            // Logout
+            val sharedPreferences =
+                getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
 
-        editor.apply()
+            editor.clear()
+            editor.putBoolean("onBoardingFinished", true)
+            editor.apply()
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+            FirebaseAuth.getInstance().signOut()
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        builder.setNegativeButton("Tidak") { _, _ -> }
+        builder.show()
+
+
     }
 
     fun DEBUGClearSharedPreferences(view: View?) {

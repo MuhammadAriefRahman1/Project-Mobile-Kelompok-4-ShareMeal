@@ -1,4 +1,4 @@
-package com.kelompok_4.share_meal.home.pages.donasi.data
+package com.kelompok_4.share_meal.data
 
 data class OpenDonasiList(
     val id: String,

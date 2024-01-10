@@ -1,5 +1,6 @@
 package com.kelompok_4.share_meal.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,15 @@ class HomeFragment : Fragment() {
 
         // Set the status bar color
         activity?.window?.statusBarColor = activity?.getColor(R.color.white)!!
+
+        // Set user greeting
+        val sharedPreferences = activity?.getSharedPreferences(
+            "SHARED_PREFERENCE",
+            Context.MODE_PRIVATE
+        )
+        sharedPreferences?.getString("nama_lengkap", "User")?.let {
+            binding.tvHomeGreetings.text = "Selamat datang, $it!"
+        }
 
         // Return the fragment view/layout
         return view

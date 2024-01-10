@@ -15,6 +15,8 @@ class SplashScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        activity?.window?.statusBarColor = resources.getColor(R.color.colorSurface)
+
         if (isOnboardingFinished()) {
             findNavController()
                 .navigate(R.id.action_splashScreenFragment_to_loginFragment)

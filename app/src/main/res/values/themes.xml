@@ -10,7 +10,8 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorPrimaryVariant">@color/colorPrimary</item>
         <item name="colorSecondaryVariant">@color/colorSecondary</item>
-
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/figtree</item>
 
     </style>
@@ -21,6 +22,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
         <item name="android:paddingHorizontal">20dp</item>
+        <item name="elevation">0dp</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/primary_button</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Small</item>
@@ -36,7 +38,7 @@
         <item name="contentPaddingTop">12dp</item>
     </style>
 
-    <style name="OutlinedRoundedCornersInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="OutlinedRoundedCornersInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
@@ -47,7 +49,7 @@
 
 
     <!--    Change default EditText styles -->
-    <style name="BaseInput" parent="Widget.AppCompat.EditText">
+    <style name="BaseInput" parent="Widget.Material3.TextInputEditText.FilledBox">
         <item name="android:fontFamily">@font/figtree_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_height">48dp</item>
@@ -58,6 +60,13 @@
         <item name="android:background">@drawable/border_bottom</item>
     </style>
 
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo</item>
+        <!-- Other optional attributes -->
+    </style>
 
-    <style name="Theme.ProjectMobileKelompok4ShareMeal" parent="Base.Theme.ProjectMobileKelompok4ShareMeal" />
+    <style name="Theme.ProjectMobileKelompok4ShareMeal.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ProjectMobileKelompok4ShareMeal.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -107,20 +107,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/figtree_medium"
-                        android:text="@string/register_username"
+                        android:text="@string/register_email"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/et_register_username"
+                        android:id="@+id/et_register_email"
                         style="@style/BaseInput"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="8dp"
                         android:autofillHints="username"
                         android:background="@drawable/bordered_input"
-                        android:hint="@string/register_username_hint"
-                        android:inputType="text" />
+                        android:hint="@string/register_email_hint"
+                        android:inputType="textEmailAddress" />
 
                 </LinearLayout>
 

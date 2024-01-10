@@ -5,10 +5,10 @@
         android:duration="@android:integer/config_mediumAnimTime"
         android:fromXDelta="0"
         android:toXDelta="-100%p" />
-    <alpha
-        android:duration="@android:integer/config_mediumAnimTime"
-        android:fromAlpha="1.0"
-        android:toAlpha="0.5" />
+    <!--    <alpha-->
+    <!--        android:duration="@android:integer/config_mediumAnimTime"-->
+    <!--        android:fromAlpha="1.0"-->
+    <!--        android:toAlpha="0.5" />-->
     <!--    <scale-->
     <!--        android:duration="@android:integer/config_mediumAnimTime"-->
     <!--        android:fromXScale="1.0"-->

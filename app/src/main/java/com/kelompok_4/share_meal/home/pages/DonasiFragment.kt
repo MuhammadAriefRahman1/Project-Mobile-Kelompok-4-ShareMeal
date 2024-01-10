@@ -10,13 +10,19 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.kelompok_4.share_meal.R
+import com.kelompok_4.share_meal.data.Penerima
 import com.kelompok_4.share_meal.databinding.FragmentDonasiBinding
-import com.kelompok_4.share_meal.home.pages.donasi.DonasiRecyclerAdapter
-import com.kelompok_4.share_meal.home.pages.donasi.data.openDonasiListDummy
+import com.kelompok_4.share_meal.home.pages.donasi.PenerimaRecyclerAdapter
 
 class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var binding: FragmentDonasiBinding
+    private lateinit var dbRef_penerima: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +31,9 @@ class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
         // Inflate the layout for this fragment
         val donasiView = inflater.inflate(R.layout.fragment_donasi, container, false)
         binding = FragmentDonasiBinding.bind(donasiView)
+
+        // Set DB
+        dbRef_penerima = FirebaseDatabase.getInstance().getReference("penerima")
 
         // Set status bar color
         activity?.window?.statusBarColor = activity?.getColor(R.color.white)!!
@@ -66,20 +75,41 @@ class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
         // Recycler View
         binding.rvDonasi.apply {
             layoutManager = LinearLayoutManager(activity)
-            val dosenAdapter = DonasiRecyclerAdapter()
-            this.adapter = dosenAdapter
-            dosenAdapter.addData(openDonasiListDummy)
+            val penerima = PenerimaRecyclerAdapter()
+            this.adapter = penerima
+        }.let {
+            val penerimaList = arrayListOf<Penerima>()
+
+            dbRef_penerima.addValueEventListener(
+                object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            penerimaList.clear()
+                            for (penerima in snapshot.children) {
+                                val penerimaData = penerima.getValue(Penerima::class.java)
+                                if (penerimaData != null) {
+                                    penerimaList.add(penerimaData)
+                                }
+                            }
+
+                            (binding.rvDonasi.adapter as PenerimaRecyclerAdapter).addData(
+                                penerimaList
+                            )
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                }
+            )
         }
 
         return donasiView
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        Toast.makeText(
-            activity,
-            "Kategori ${p0?.getItemAtPosition(p2)} dipilih",
-            Toast.LENGTH_SHORT
-        ).show()
+
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

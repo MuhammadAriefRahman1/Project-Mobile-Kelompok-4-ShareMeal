@@ -1,6 +1,5 @@
 package com.kelompok_4.share_meal.onboarding
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,17 +16,4 @@ class OnboardingActivity : AppCompatActivity() {
         )
 
     }
-
-
-    fun auth(): Boolean {
-        val sharedPreferences = this
-            .getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
-
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("isLoggedIn", true)
-        editor.apply()
-
-        return true
-    }
-
 }
