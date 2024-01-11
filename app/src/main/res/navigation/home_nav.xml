@@ -6,18 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.kelompok_4.share_meal.vPagerFragment.home.HomeFragment"
+        android:name="com.kelompok_4.share_meal.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_mainActivity3"
-            app:destination="@id/mainActivity3"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <activity
-        android:id="@+id/mainActivity3"
-        android:name="com.kelompok_4.share_meal.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/fragment_home" />
 </navigation>

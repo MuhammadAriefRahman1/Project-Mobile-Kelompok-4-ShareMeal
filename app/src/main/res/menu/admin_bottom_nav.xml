@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/admin__nav_home"
+        android:title="@string/admin__bottom_nav__home"
+        android:icon="@drawable/ic_home"
+         />
+
+    <item
+        android:id="@+id/admin__nav_donasi"
+        android:icon="@drawable/ic_donation"
+        android:title="@string/admin__bottom_nav__donasi" />
+<!--    <item-->
+<!--        android:id="@+id/admin__nav_donatur"-->
+<!--        android:icon="@drawable/ic_person"-->
+<!--        android:title="@string/admin__bottom_nav__donatur" />-->
+    <item
+        android:id="@+id/admin__nav_penerima"
+        android:icon="@drawable/ic_houses"
+        android:title="@string/admin__bottom_nav__penerima" />
+<!--    <item-->
+<!--        android:id="@+id/admin__nav_notifikasi"-->
+<!--        android:icon="@drawable/ic_notifications"-->
+<!--        android:title="@string/admin__bottom_nav__notifikasi" />-->
+
+</menu>

@@ -2,21 +2,55 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.ProjectMobileKelompok4ShareMeal"
+        android:roundIcon="@drawable/ic_logo"
+        android:supportsRtl="false"
+        android:theme="@style/Base.Theme.ProjectMobileKelompok4ShareMeal"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".vPagerFragment.onboarding.OnboardingActivity"
+            android:name=".home.pages.profil.DetailAturPreferenceActivity"
             android:exported="false" />
         <activity
-            android:name=".vPagerFragment.home.HomeActivity"
+            android:name=".home.pages.profil.AturProfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.donasi.DetailPenerimaanDonasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.donasi.PengajuanDonasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.profil.AturPreferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.profil.PrediksiDonasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.penerima.DetailPenerimaDonasi"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.profil.PengajuanPenerimaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.donasi.DetailPenerimaDonasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

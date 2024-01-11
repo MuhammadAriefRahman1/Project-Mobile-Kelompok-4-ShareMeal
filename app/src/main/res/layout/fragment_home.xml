@@ -1,29 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSurface"
-    tools:context=".vPagerFragment.home.HomeFragment">
+    android:background="@color/neutralSurface"
+    tools:context=".home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--    Content -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HOME SCRENN BI" />
-
-    <Button
-        android:id="@+id/DEV_btn_home_logout"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DEV: LOGOUT" />
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        tools:ignore="ExtraText">
 
-    <Button
-        android:id="@+id/DEV_btn_home_clearpref"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="DEV: CLEAR PREFERENCE" />
+        <!--    Greetings -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/tv_home_greetings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/figtree_bold"
+                android:text="Halo [USERNAME]!"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
 
-</FrameLayout>
+        <!--        Subgreetings -->
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:alpha="0.75"
+            android:fontFamily="@font/figtree_medium"
+            android:text="@string/home_greeting" />
+
+        <!-- Donasi Dalam Progress -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/figtree_semibold"
+            android:text="Donasi Terbaru"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_donasi_dalam_progres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <!-- Penerima Donasi -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/figtree_semibold"
+            android:text="Penerima Donasi Baru"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_penerima_donasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

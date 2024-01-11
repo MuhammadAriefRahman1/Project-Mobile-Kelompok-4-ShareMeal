@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSurface"
-    tools:context=".vPagerFragment.onboarding.SplashScreenFragment">
+    tools:context=".onboarding.SplashScreenFragment">
 
     <ImageView
         android:id="@+id/imageView_splashScreen_logo"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:src="@drawable/ic_logo"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

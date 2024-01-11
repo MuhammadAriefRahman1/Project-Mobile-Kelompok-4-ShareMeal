@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/neutralSurface"
+    android:orientation="vertical"
+    tools:context=".home.pages.profil.PengajuanPenerimaActivity">
+
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar_withBack"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/border_bottom">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar_withBack"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/border_bottom">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onBackPressed"
+                    android:src="@drawable/ic_back" />
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/appBar_withBack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/figtree_bold"
+                android:text="Form Prediksi Donasi"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:alpha="0.75"
+                android:fontFamily="@font/figtree_medium"
+                android:text="Isi form dibawah ini untuk melakukan prediksi donasi"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Kategori"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/sp__prediksi__tipe"
+                    style="@style/BaseInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bordered_input"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Tipe"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/sp__prediksi__nama"
+                    style="@style/BaseInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bordered_input"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Satuan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/sp__prediksi__satuan"
+                    style="@style/BaseInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bordered_input"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Jumlah"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et__prediksi__jumlah"
+                    style="@style/BaseInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bordered_input"
+                    android:hint="Jumlah per satuan..."
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn__prediksi__submit"
+                style="@style/BaseButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/figtree_bold"
+                android:text="Prediksi"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="Hasil Prediksi : "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv__prediksi__hasil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="Pending"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

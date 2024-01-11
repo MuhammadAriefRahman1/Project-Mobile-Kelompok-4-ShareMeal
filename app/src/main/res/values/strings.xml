@@ -17,15 +17,39 @@
 
     <!-- Login -->
     <string name="login_title">Masuk</string>
+    <string name="login_subtitle">
+        Selamat datang! Silahkan masuk untuk melanjutkan.
+    </string>
 
-    <string name="login_username">Username</string>
-    <string name="login_username_hint">Masukkan username...</string>
+    <string name="login_email">Email</string>
+    <string name="login_email_hint">mail@example.com</string>
     <string name="login_password">Password</string>
     <string name="login_password_hint">********</string>
+
     <string name="login_btn">Masuk</string>
 
     <string name="login_register_text">Belum punya akun?</string>
     <string name="login_register_daftar">Daftar</string>
+
+    <!-- Register -->
+    <string name="register_title">Daftar</string>
+    <string name="register_subtitle">
+        Silahkan daftar untuk mulai berbagi makanan dan membantu sesama.
+    </string>
+
+    <string name="register_nama_lengkap">Nama Lengkap</string>
+    <string name="register_nama_lengkap_hint">Masukkan nama lengkap...</string>
+    <string name="register_email">Email</string>
+    <string name="register_email_hint">mail@example.com</string>
+    <string name="register_password">Password</string>
+    <string name="register_password_hint">********</string>
+    <string name="register_confirm_password">Konfirmasi Password</string>
+    <string name="register_confirm_password_hint">********</string>
+
+    <string name="register_btn">Daftar</string>
+
+    <string name="register_login_text">Sudah punya akun?</string>
+    <string name="register_login_masuk">Masuk</string>
 
     <!-- Menus -->
 
@@ -36,7 +60,39 @@
     <string name="bottom_nav_notifikasi">Notifikasi</string>
     <string name="bottom_nav_profil">Profil</string>
 
+    <!-- Screens -->
+    <!-- Home  -->
+    <string name="home_greeting">
+        Selamat datang di ShareMeal. Mulailah berbagi makanan dan membantu sesama.
+    </string>
+
+    <!-- Profil -->
+    <string name="profil__register_penerima_desc">Silahkan lengkapi informasi tersebut terlebih dahulu. Seorang admin akan melakukan verifikasi dengan mengkontak anda melalui informasi yang sudah diatur pada akun.</string>
+
+
+    <!-- Donasi -->
+    <string name="donasi_title">Daftar Donasi</string>
+
+    <!-- Admin -->
+    <!-- Bottom Nav (Admin) -->
+    <string name="admin__bottom_nav__home">Beranda</string>
+    <string name="admin__bottom_nav__donasi">Donasi</string>
+    <string name="admin__bottom_nav__donatur">Donatur</string>
+    <string name="admin__bottom_nav__penerima">Penerima</string>
+    <string name="admin__bottom_nav__notifikasi">Notifikasi</string>
+
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_admin_drawer">AdminDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

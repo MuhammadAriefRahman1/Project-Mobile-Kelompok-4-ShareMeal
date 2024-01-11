@@ -5,33 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".vPagerFragment.onboarding.LoginFragment">
+    tools:context=".onboarding.LoginFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView_login_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/figtree_bold"
-            android:text="@string/login_title"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
 
-        <View
-            android:id="@+id/imageView_onboarding1"
-            android:layout_width="196dp"
-            android:layout_height="196dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/textView_login_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/figtree_bold"
+                android:text="@string/login_title"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/textView_login_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/figtree_medium"
+                android:text="@string/login_subtitle"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <!--        <View-->
+        <!--            android:id="@+id/imageView_onboarding1"-->
+        <!--            android:layout_width="196dp"-->
+        <!--            android:layout_height="196dp"-->
+        <!--            android:layout_marginTop="48dp"-->
+        <!--            android:layout_marginBottom="24dp"-->
+        <!--            android:background="@color/colorPrimary" />-->
+
+        <ImageView
+            android:id="@+id/imageView_onboarding1_logo"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/img_login" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,17 +77,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/figtree_medium"
-                    android:text="@string/login_username"
+                    android:text="@string/login_email"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+
                 <EditText
-                    android:id="@+id/et_login_username"
+                    android:id="@+id/et_login_email"
+                    style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:hint="@string/login_username_hint"
-                    android:inputType="text" />
+                    android:layout_marginTop="8dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/bordered_input"
+                    android:hint="@string/login_email_hint"
+                    android:inputType="textEmailAddress" />
 
             </LinearLayout>
 
@@ -79,18 +111,52 @@
 
                 <EditText
                     android:id="@+id/et_login_password"
+                    style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints="password"
+                    android:background="@drawable/bordered_input"
                     android:hint="@string/login_password_hint"
-                    android:inputType="text" />
+                    android:inputType="textPassword" />
             </LinearLayout>
 
-            <Button
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:fontFamily="@font/figtree_medium"-->
+            <!--                    android:text="@string/login_password"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="14sp" />-->
+
+            <!--                <com.google.android.material.textfield.TextInputLayout-->
+            <!--                    style="@style/OutlinedRoundedCornersInput"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content">-->
+
+            <!--                    <com.google.android.material.textfield.TextInputEditText-->
+            <!--                        style="@style/OutlinedRoundedCornersInput"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="40dp"-->
+            <!--                        android:hint="@string/login_password_hint"-->
+            <!--                        android:inputType="textPassword" />-->
+
+            <!--                </com.google.android.material.textfield.TextInputLayout>-->
+            <!--            </LinearLayout>-->
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_login"
+                style="@style/BaseButton"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/primary_button"
                 android:fontFamily="@font/figtree_bold"
                 android:text="@string/login_btn" />
 

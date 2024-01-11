@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.AdminActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/admin__appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/admin__toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/border_bottom">
+
+            <ImageView
+                android:id="@+id/admin__iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onBackPressed"
+                android:src="@drawable/ic_back" />
+
+
+            <TextView
+                android:id="@+id/admin__toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/figtree_bold"
+                android:text="[PLACEHOLDER]"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/admin__iv_logout"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_logout"
+
+                />
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/admin__fragmentViewContainer"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/neutralSurface"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/admin__bottomNavigationView_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin__appbar"
+        app:navGraph="@navigation/admin_nav" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/admin__bottomNavigationView_main"
+        style="BottomNavMenu"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/border_top"
+        android:padding="0dp"
+        app:elevation="4dp"
+        app:itemActiveIndicatorStyle="@color/colorPrimary"
+        app:itemIconSize="20dp"
+        app:itemIconTint="@color/black"
+
+
+        app:itemTextAppearanceActive="@color/colorPrimary"
+        app:itemTextAppearanceInactive="@color/black"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/admin_bottom_nav" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
