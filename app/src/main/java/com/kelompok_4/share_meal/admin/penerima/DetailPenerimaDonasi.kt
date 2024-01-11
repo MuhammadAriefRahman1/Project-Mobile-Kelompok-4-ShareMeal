@@ -2,15 +2,22 @@ package com.kelompok_4.share_meal.admin.penerima
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.data.Penerima
+import com.kelompok_4.share_meal.data.Preference
 import com.kelompok_4.share_meal.data.User
 import com.kelompok_4.share_meal.databinding.ActivityDetailPenerimaDonasiAdminBinding
+import com.kelompok_4.share_meal.helpers.DbHelpers
 import com.kelompok_4.share_meal.helpers.Helpers
 
 class DetailPenerimaDonasi : AppCompatActivity() {
@@ -39,6 +46,7 @@ class DetailPenerimaDonasi : AppCompatActivity() {
             finish()
         }
 
+
         dbRef_penerima.child(penerima_id.toString()).get().addOnSuccessListener {
             if (it.exists()) {
                 val penerima = it.getValue(Penerima::class.java)
@@ -61,6 +69,32 @@ class DetailPenerimaDonasi : AppCompatActivity() {
                     if (penerima.verification == true) {
                         binding.btnDetailPengajuanTerima.visibility = View.GONE
                     }
+
+                    DbHelpers.fetchSingleDataByPath("users/${penerima.id_user}") {
+                        val user = it!!.getValue(User::class.java)!!
+
+                        binding.tvPenanggungjawabName.text = user.nama_lengkap
+                        binding.tvPenanggungjawabEmail.text = user.alamat
+                        binding.tvPenanggungjawabPhone.text = user.no_hp
+
+                        if (user.profile_picture != "") {
+                            Glide.with(this).load(user.profile_picture)
+                                .into(binding.ivPenerimaDetailPicture)
+                        }
+                    }
+
+                    DbHelpers.fetchDataByPath("preference") {
+                        var preferenceList = arrayListOf<Preference>()
+                        it!!.children.forEach { preference ->
+                            val preference = preference.getValue(Preference::class.java)!!
+
+                            if (preference.user_id == penerima.id_user) {
+                                preferenceList.add(preference)
+                            }
+                        }
+
+
+                    }
                 }
             }
         }
@@ -75,33 +109,53 @@ class DetailPenerimaDonasi : AppCompatActivity() {
 
                     var penerima: Penerima
 
-                    dbRef_penerima.child(penerima_id.toString()).get().addOnSuccessListener {
-                        if (it.exists()) {
-                            penerima = it.getValue(Penerima::class.java)!!
-                            penerima.verification = true
-                            dbRef_penerima.child(penerima_id.toString()).setValue(penerima)
+                    FirebaseDatabase.getInstance().getReference("penerima/${penerima_id}")
+                        .addListenerForSingleValueEvent(
+                            object : ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    penerima = snapshot.getValue(Penerima::class.java)!!
+                                    penerima.verification = true
+                                    penerima.updated_at = System.currentTimeMillis()
+                                    dbRef_penerima.child(penerima_id).setValue(penerima)
 
-                            dbRef_user.child(penerima.id_user.toString()).get()
-                                .addOnSuccessListener {
-                                    if (it.exists()) {
-                                        val user = it.getValue(User::class.java)!!
-                                        user.role = "Penerima"
-                                        dbRef_user.child(penerima.id_user.toString()).setValue(user)
-                                    }
+                                    FirebaseDatabase.getInstance()
+                                        .getReference("users/${penerima.id_user}")
+                                        .addListenerForSingleValueEvent(
+                                            object : ValueEventListener {
+                                                override fun onDataChange(snapshot: DataSnapshot) {
+                                                    val user = snapshot.getValue(User::class.java)!!
+                                                    user.role = "Penerima"
+                                                    dbRef_user.child(penerima.id_user)
+                                                        .setValue(user)
+
+                                                    dialog.dismiss()
+                                                    AlertDialog.Builder(this@DetailPenerimaDonasi)
+                                                        .setTitle("Verifikasi Penerima")
+                                                        .setMessage("Penerima berhasil diverifikasi")
+                                                        .setPositiveButton("Ok") { _, _ ->
+                                                            onBackPressed()
+                                                        }.setOnCancelListener {
+                                                            onBackPressed()
+                                                        }
+                                                        .show()
+                                                }
+
+                                                override fun onCancelled(error: DatabaseError) {
+                                                    Log.e("DetailPenerimaDonasi", error.message)
+                                                }
+
+                                            }
+                                        )
                                 }
-                        }
-                    }
 
-                    dialog.dismiss()
-                    AlertDialog.Builder(this)
-                        .setTitle("Verifikasi Penerima")
-                        .setMessage("Penerima berhasil diverifikasi")
-                        .setPositiveButton("Ok") { _, _ ->
-                            finish()
-                        }.setOnCancelListener {
-                            finish()
-                        }
-                        .show()
+                                override fun onCancelled(error: DatabaseError) {
+                                    Log.e("DetailPenerimaDonasi", error.message)
+                                }
+
+                            }
+                        )
+
+
                 }
                 .setNegativeButton("Tidak") { _, _ -> }
                 .show()

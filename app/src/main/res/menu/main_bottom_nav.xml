@@ -14,10 +14,15 @@
         android:id="@+id/nav_donasi"
         android:icon="@drawable/ic_donation"
         android:title="@string/bottom_nav_donasi" />
+
     <item
-        android:id="@+id/nav_notifikasi"
-        android:icon="@drawable/ic_notifications"
-        android:title="@string/bottom_nav_notifikasi" />
+        android:id="@+id/nav_donasi__penerima"
+        android:icon="@drawable/ic_penerimaan"
+        android:title="Penerimaan" />
+<!--    <item-->
+<!--        android:id="@+id/nav_notifikasi"-->
+<!--        android:icon="@drawable/ic_notifications"-->
+<!--        android:title="@string/bottom_nav_notifikasi" />-->
     <item
         android:id="@+id/nav_profil"
         android:icon="@drawable/ic_person"

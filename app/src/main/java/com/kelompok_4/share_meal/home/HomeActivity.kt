@@ -5,14 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.kelompok_4.share_meal.MainActivity
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.databinding.ActivityHomeBinding
 import com.kelompok_4.share_meal.home.pages.DonasiFragment
+import com.kelompok_4.share_meal.home.pages.PenerimaanDonasiFragment
 import com.kelompok_4.share_meal.home.pages.ProfilFragment
+import com.kelompok_4.share_meal.home.pages.RiwayatFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -23,51 +25,46 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        // Remove bottom nav if different role
+        val sharedPreferences = getSharedPreferences("SHARED_PREFERENCE", Context.MODE_PRIVATE)
+        val role = sharedPreferences.getString("role", "Donatur")
+        if (role != "Penerima") {
+            binding.bottomNavigationViewMain.menu.removeItem(R.id.nav_donasi__penerima)
+        }
 
         binding.bottomNavigationViewMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainerView2, HomeFragment())
-                        .commit()
-
+                    swapFragment(HomeFragment())
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_riwayat -> {
-                    Toast.makeText(
-                        this,
-                        "Search",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    swapFragment(RiwayatFragment())
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_donasi -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainerView2, DonasiFragment())
-                        .commit()
-
+                    swapFragment(DonasiFragment())
                     return@setOnItemSelectedListener true
                 }
 
-                R.id.nav_notifikasi -> {
-                    Toast.makeText(
-                        this,
-                        "Profile",
-                        Toast.LENGTH_SHORT
-                    ).show()
+//                R.id.nav_notifikasi -> {
+//                    Toast.makeText(
+//                        this,
+//                        "Profile",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    return@setOnItemSelectedListener true
+//                }
+
+                R.id.nav_donasi__penerima -> {
+                    swapFragment(PenerimaanDonasiFragment())
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_profil -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainerView2, ProfilFragment())
-                        .commit()
-
+                    swapFragment(ProfilFragment())
                     return@setOnItemSelectedListener true
                 }
 
@@ -76,6 +73,13 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun swapFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainerView2, fragment)
+            .commit()
     }
 
     override fun onBackPressed() {

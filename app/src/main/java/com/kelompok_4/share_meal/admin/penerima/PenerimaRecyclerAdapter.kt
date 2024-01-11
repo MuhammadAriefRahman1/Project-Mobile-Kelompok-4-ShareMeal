@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.data.OpenDonasiList
 import com.kelompok_4.share_meal.data.Penerima
+import com.kelompok_4.share_meal.data.User
 import com.kelompok_4.share_meal.data.openDonasiListDummy
 import com.kelompok_4.share_meal.databinding.LayoutAdminPenerimaDonasiBinding
+import com.kelompok_4.share_meal.helpers.DbHelpers
 import com.kelompok_4.share_meal.helpers.Helpers
 
 class PenerimaRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var items: ArrayList<Penerima> = ArrayList()
+    private var items: List<Penerima> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
             LayoutAdminPenerimaDonasiBinding.inflate(
@@ -42,7 +45,7 @@ class PenerimaRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         }
     }
 
-    fun addData(list: ArrayList<Penerima>) {
+    fun addData(list: List<Penerima>) {
         items = list
         notifyDataSetChanged()
     }
@@ -50,25 +53,29 @@ class PenerimaRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     class AdminPenerimaViewHolder(val binding: LayoutAdminPenerimaDonasiBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val penerimaName = binding.tvPenerimaName
-        val penerimaAddress = binding.tvPenerimaAddress
-        val penerimaVerified = binding.tvPenerimaDetailIsVerified
-        val penerimaFl = binding.flPenerimaIsVerified
-
         fun bind(penerima: Penerima) {
-            penerimaName.text = penerima.nama
-            penerimaAddress.text = penerima.alamat
-            penerimaVerified.text =
+            binding.tvPenerimaName.text = penerima.nama
+            binding.tvPenerimaAddress.text = penerima.alamat
+            binding.tvPenerimaDetailIsVerified.text =
                 if (penerima.verification == true)
                     "Sudah Diverifikasi"
                 else
                     "Belum Diverifikasi"
 
-            penerimaFl.background =
+            binding.flPenerimaIsVerified.background =
                 if (penerima.verification == true)
                     AppCompatResources.getDrawable(itemView.context, R.drawable.badge_success)
                 else
                     AppCompatResources.getDrawable(itemView.context, R.drawable.badge_danger)
+
+            DbHelpers.fetchSingleDataByPath("users/${penerima.id_user}") {
+                val user = it!!.getValue(User::class.java)!!
+
+                if (user.profile_picture != "") {
+                    Glide.with(itemView.context).load(user.profile_picture)
+                        .into(binding.ivPenerimaPicture)
+                }
+            }
         }
 
         fun onClick(penerima: Penerima) {

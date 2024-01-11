@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Set Status Bar Color
-        window?.statusBarColor = resources.getColor(R.color.white)
+        window?.statusBarColor = resources.getColor(R.color.colorSurface)
 
 
         // Initialize Firebase

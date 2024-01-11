@@ -1,10 +1,11 @@
 package com.kelompok_4.share_meal.data
 
 data class User(
-    val id: String = "",
-    val email: String = "",
-    val nama_lengkap: String = "",
-    val alamat: String = "",
-    val no_hp: String = "",
+    var id: String = "",
+    var email: String = "",
+    var nama_lengkap: String = "",
+    var profile_picture: String = "",
+    var alamat: String = "",
+    var no_hp: String = "",
     var role: String = "",
 )

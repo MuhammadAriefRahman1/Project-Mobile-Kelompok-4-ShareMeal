@@ -64,15 +64,43 @@
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
-            <!--            <TextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="12dp"-->
-            <!--                android:alpha="0.75"-->
-            <!--                android:fontFamily="@font/figtree_medium"-->
-            <!--                android:text="@string/profil__register_penerima_desc"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textSize="14sp" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Foto Pangan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_donasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="196dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bordered_input"
+                    android:scaleType="centerCrop" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn__atur_foto"
+                    style="@style/BaseButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/primary_button"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="Atur Foto" />
+
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="8dp"
-                    android:autofillHints="password"
+
                     android:background="@drawable/bordered_input"
                     android:gravity="center_vertical"
                     android:hint="Makanan Cepat Saji, Bahan Pokok"
@@ -122,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="8dp"
-                    android:autofillHints="password"
+
                     android:background="@drawable/bordered_input"
                     android:gravity="center_vertical"
                     android:hint="Mie Instan, Beras, dll"
@@ -150,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="8dp"
-                    android:autofillHints="password"
+
                     android:background="@drawable/bordered_input"
                     android:gravity="top"
                     android:hint="Deskripsikan mengenai donasi anda..."
@@ -159,6 +187,7 @@
                     android:paddingVertical="12dp" />
             </LinearLayout>
 
+            <!--            Amount -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -169,30 +198,89 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/figtree_medium"
-                    android:text="Lokasi"
+                    android:text="Satuan"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/et__donasi__expired"
+                    android:id="@+id/et__donasi__satuan"
                     style="@style/BaseInput"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="8dp"
-                    android:autofillHints="password"
+
                     android:background="@drawable/bordered_input"
                     android:gravity="center_vertical"
-                    android:hint="Perkiraan Basi..."
-                    android:inputType="date" />
+                    android:hint="kg, liter, bungkus"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!--            Amount -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Jumlah"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et__donasi__jumlah"
+                    style="@style/BaseInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+
+                    android:background="@drawable/bordered_input"
+                    android:gravity="center_vertical"
+                    android:hint="Masukkan jumlah donasi..."
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
 
-            <com.google.android.material.button.MaterialButton
+            <!--            Expiration -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Perkiraan Ekspirasi"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/et__donasi__expired"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+
+                    android:background="@drawable/bordered_input"
+                    android:gravity="center_vertical"
+                    android:hint="Pilih tanggal ekspirasi..."
+                    android:paddingHorizontal="16dp"
+
+                    />
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn__donasi__donate"
                 style="@style/BaseButton"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/primary_button"
                 android:fontFamily="@font/figtree_bold"
                 android:text="Simpan Donasi" />

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,15 @@
         android:theme="@style/Base.Theme.ProjectMobileKelompok4ShareMeal"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".home.pages.profil.DetailAturPreferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.profil.AturProfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.pages.donasi.DetailPenerimaanDonasiActivity"
+            android:exported="false" />
         <activity
             android:name=".home.pages.donasi.PengajuanDonasiActivity"
             android:exported="false" />
@@ -34,10 +44,7 @@
             android:name=".home.AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".home.pages.donasi.DetailDonasiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".home.pages.donasi.DetailPenerimaDonasi"
+            android:name=".home.pages.donasi.DetailPenerimaDonasiActivity"
             android:exported="false" />
         <activity
             android:name=".onboarding.OnboardingActivity"

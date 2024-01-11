@@ -1,11 +1,11 @@
 package com.kelompok_4.share_meal.home.pages
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -23,6 +23,8 @@ import com.kelompok_4.share_meal.home.pages.donasi.PenerimaRecyclerAdapter
 class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var binding: FragmentDonasiBinding
     private lateinit var dbRef_penerima: DatabaseReference
+    private lateinit var penerimaList: ArrayList<Penerima>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,27 +51,71 @@ class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
 
         // Spinner (Category Dropdown)
-        var categoryDropdownAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_dropdown_item,
-            arrayOf("Kategori", "Bahan Baku", "Makanan Cepat Saji"),
-        )
-        categoryDropdownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerDonasiKategori.adapter = categoryDropdownAdapter
-        binding.spinnerDonasiKategori.onItemSelectedListener = this
+//        var categoryDropdownAdapter = ArrayAdapter(
+//            requireContext(),
+//            android.R.layout.simple_spinner_dropdown_item,
+//            arrayOf("Kategori", "Bahan Baku", "Makanan Cepat Saji"),
+//        )
+//        categoryDropdownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        binding.spinnerDonasiKategori.adapter = categoryDropdownAdapter
+//        binding.spinnerDonasiKategori.onItemSelectedListener = this
+//
+
+        penerimaList = arrayListOf<Penerima>()
 
         binding.btnDonasiSearch.setOnClickListener {
             val search = binding.teDonasiSearch.text.toString()
+            binding.btnClear.visibility = View.VISIBLE
 
-            Toast.makeText(
-                activity,
-                "Mencari donasi dengan nama $search",
-                Toast.LENGTH_SHORT
-            ).show(
-            )
+            if (search.isNotEmpty()) {
+                dbRef_penerima.addValueEventListener(
+                    object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+                                penerimaList.clear()
+                                (binding.rvDonasi.adapter)!!.notifyDataSetChanged()
+                                for (penerima in snapshot.children) {
+                                    val penerimaData = penerima.getValue(Penerima::class.java)
+                                    if (penerimaData != null && penerimaData.verification) {
+                                        if (penerimaData.nama.contains(search, true)) {
+                                            penerimaList.add(penerimaData)
+                                        }
+                                    }
+                                }
+
+                                if (penerimaList.size > 0) {
+                                    (binding.rvDonasi.adapter as PenerimaRecyclerAdapter).addData(
+                                        penerimaList
+                                    )
+                                } else {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Tidak ada penerima yang ditemukan",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(
+                                requireContext(),
+                                "Terjadi kesalahan",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                )
+            }
 
             binding.teDonasiSearch.text?.clear()
             binding.btnDonasiSearch.visibility = View.GONE
+        }
+
+        // Set Clear
+        binding.btnClear.setOnClickListener {
+            binding.btnClear.visibility = View.GONE
+            refreshData(requireContext())
         }
 
         // Recycler View
@@ -77,40 +123,44 @@ class DonasiFragment : Fragment(), AdapterView.OnItemSelectedListener {
             layoutManager = LinearLayoutManager(activity)
             val penerima = PenerimaRecyclerAdapter()
             this.adapter = penerima
-        }.let {
-            val penerimaList = arrayListOf<Penerima>()
-
-            dbRef_penerima.addValueEventListener(
-                object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.exists()) {
-                            penerimaList.clear()
-                            for (penerima in snapshot.children) {
-                                val penerimaData = penerima.getValue(Penerima::class.java)
-                                if (penerimaData != null) {
-                                    penerimaList.add(penerimaData)
-                                }
-                            }
-
-                            (binding.rvDonasi.adapter as PenerimaRecyclerAdapter).addData(
-                                penerimaList
-                            )
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                }
-            )
         }
 
+        refreshData(requireContext())
+
         return donasiView
+    }
+
+    fun refreshData(context: Context) {
+        dbRef_penerima.addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        penerimaList.clear()
+                        for (penerima in snapshot.children) {
+                            val penerimaData = penerima.getValue(Penerima::class.java)
+                            if (penerimaData != null && penerimaData.verification) {
+                                penerimaList.add(penerimaData)
+                            }
+                        }
+
+                        (binding.rvDonasi.adapter as PenerimaRecyclerAdapter).addData(
+                            penerimaList
+                        )
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            }
+        )
+
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
     }
+
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")

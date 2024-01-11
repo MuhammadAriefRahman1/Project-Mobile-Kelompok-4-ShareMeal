@@ -51,13 +51,21 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/imageView_onboarding1"
-                android:layout_width="196dp"
-                android:layout_height="196dp"
-                android:layout_marginTop="32dp"
+            <!--            <View-->
+            <!--                android:id="@+id/imageView_onboarding1"-->
+            <!--                android:layout_width="196dp"-->
+            <!--                android:layout_height="196dp"-->
+            <!--                android:layout_marginTop="32dp"-->
+            <!--                android:layout_marginBottom="24dp"-->
+            <!--                android:background="@color/colorPrimary" />-->
+
+            <ImageView
+                android:id="@+id/imageView_onboarding1_logo"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginBottom="24dp"
-                android:background="@color/colorPrimary" />
+                android:src="@drawable/img_register" />
 
 
             <!-- START: Akun Section -->
@@ -186,12 +194,13 @@
                 android:layout_marginHorizontal="24dp"
                 android:orientation="vertical">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_register"
                     style="@style/BaseButton"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/primary_button"
                     android:fontFamily="@font/figtree_bold"
                     android:text="@string/register_btn" />
 

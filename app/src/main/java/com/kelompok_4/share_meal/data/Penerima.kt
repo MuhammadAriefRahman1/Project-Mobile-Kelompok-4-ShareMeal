@@ -7,4 +7,6 @@ data class Penerima(
     val alamat: String = "",
     val deskripsi: String = "",
     var verification: Boolean = false,
+    var created_at: Long = System.currentTimeMillis(),
+    var updated_at: Long = System.currentTimeMillis(),
 )

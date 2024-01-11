@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.kelompok_4.share_meal.R
 import com.kelompok_4.share_meal.data.Penerima
 import com.kelompok_4.share_meal.databinding.ActivityPengajuanPenerimaBinding
+import com.kelompok_4.share_meal.helpers.Helpers
 
 class PengajuanPenerimaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPengajuanPenerimaBinding
@@ -26,7 +27,7 @@ class PengajuanPenerimaActivity : AppCompatActivity() {
 
         // Set back button
         binding.ivBack.setOnClickListener {
-            finish()
+            onBackPressed()
         }
 
         // Set Description
@@ -55,7 +56,15 @@ class PengajuanPenerimaActivity : AppCompatActivity() {
             // Save data to database
             val penerimaId = dbRef.push().key
             val penerima =
-                Penerima(penerimaId.toString(), userId.toString(), nama, alamat, deskripsi, false)
+                Penerima(
+                    id = penerimaId.toString(),
+                    id_user = userId.toString(),
+                    nama = nama,
+                    alamat = alamat,
+                    deskripsi = deskripsi,
+                    verification = false,
+                )
+            
             dbRef.child(penerimaId.toString()).setValue(penerima)
                 .addOnSuccessListener {
                     AlertDialog.Builder(this)
@@ -77,5 +86,11 @@ class PengajuanPenerimaActivity : AppCompatActivity() {
 
 
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        Helpers.overridePendingExitTransition(this)
     }
 }

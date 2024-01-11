@@ -18,14 +18,23 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="128dp"
             android:layout_height="92dp"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
+
             app:rippleColor="@android:color/transparent"
             app:strokeWidth="0dp">
 
             <View
+                android:id="@+id/v_donation_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary" />
+                android:background="@drawable/bordered_input" />
+
+            <ImageView
+                android:id="@+id/iv_penerima"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person" />
 
         </com.google.android.material.card.MaterialCardView>
 

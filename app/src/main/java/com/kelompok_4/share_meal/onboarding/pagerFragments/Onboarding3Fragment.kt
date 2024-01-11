@@ -24,9 +24,9 @@ class Onboarding3Fragment : Fragment() {
         binding = FragmentOnboarding3Binding.bind(view)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.btnOnboardingBack.setOnClickListener {
-            viewPager?.currentItem = 1
-        }
+//        binding.btnOnboardingBack.setOnClickListener {
+//            viewPager?.currentItem = 1
+//        }
 
         binding.btnOnboardingFinish.setOnClickListener {
             val sharedPreferences = requireActivity()

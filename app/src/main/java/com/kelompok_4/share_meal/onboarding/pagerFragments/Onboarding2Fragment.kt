@@ -22,13 +22,13 @@ class Onboarding2Fragment : Fragment() {
         binding = FragmentOnboarding2Binding.bind(view)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.btnOnboardingNext.setOnClickListener {
-            viewPager?.currentItem = 2
-        }
-
-        binding.btnOnboardingBack.setOnClickListener {
-            viewPager?.currentItem = 0
-        }
+//        binding.btnOnboardingNext.setOnClickListener {
+//            viewPager?.currentItem = 2
+//        }
+//
+//        binding.btnOnboardingBack.setOnClickListener {
+//            viewPager?.currentItem = 0
+//        }
 
         return view
     }

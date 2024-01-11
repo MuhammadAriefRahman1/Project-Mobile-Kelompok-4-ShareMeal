@@ -47,10 +47,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="214dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white" />
+
+                <ImageView
+                    android:id="@+id/iv_penerima_detail_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person" />
+
+            </FrameLayout>
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="214dp"
-                android:background="@color/colorPrimary" />
+                android:layout_height="1dp"
+                android:background="@drawable/border_bottom" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,11 +123,54 @@
                     android:id="@+id/tv_penerima_detail_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/figtree"
                     android:text="[DESKRIPSI]"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/neutralBorder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="Penanggung Jawab"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_penanggungjawab_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/figtree_bold"
+                    android:text="[NAMA]"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_penanggungjawab_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="[EMAIL]" />
+
+                <TextView
+                    android:id="@+id/tv_penanggungjawab_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/figtree_medium"
+                    android:text="[NO HP]" />
 
 
                 <LinearLayout
@@ -117,12 +178,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn__detail_pengajuan__terima"
                         style="@style/BaseButton"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="32dp"
+                        android:background="@drawable/primary_button"
                         android:text="Verifikasi" />
 
                 </LinearLayout>

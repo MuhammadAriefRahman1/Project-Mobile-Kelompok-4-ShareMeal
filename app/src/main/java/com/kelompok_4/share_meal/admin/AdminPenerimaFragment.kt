@@ -56,12 +56,13 @@ class AdminPenerimaFragment : Fragment() {
                 if (snapshot.exists()) {
                     penerimaList.clear()
                     for (penerima in snapshot.children) {
-                        Log.d("PENERIMA", penerima.toString())
                         val penerimaData = penerima.getValue(Penerima::class.java)
                         if (penerimaData != null) {
                             penerimaList.add(penerimaData)
                         }
                     }
+
+                    Log.d("PENERIMA", penerimaList.toString())
 
                     (binding.rvAdminPenerima.adapter as PenerimaRecyclerAdapter).addData(
                         penerimaList

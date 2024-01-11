@@ -25,7 +25,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary" />
+                android:background="@drawable/bordered_input" />
+
+            <ImageView
+                android:id="@+id/iv_penerima_picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person" />
 
         </com.google.android.material.card.MaterialCardView>
 

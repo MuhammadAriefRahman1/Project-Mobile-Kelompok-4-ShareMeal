@@ -36,6 +36,7 @@
             android:paddingVertical="32dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_profil"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:src="@drawable/ic_person"
@@ -86,6 +87,61 @@
             android:text="Akun"
             android:textSize="18sp" />
 
+        <!-- Atur Profil -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_profil_atur_profil"
+            style="@style/TransparentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_profil_atur_profil"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_person"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_profil_atur_profil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/figtree_medium"
+                        android:text="Atur Profil"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Keluar -->
         <com.google.android.material.card.MaterialCardView
@@ -143,60 +199,60 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_profil_prediksi"
-            style="@style/TransparentButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+        <!--        <com.google.android.material.card.MaterialCardView-->
+        <!--            android:id="@+id/cv_profil_prediksi"-->
+        <!--            style="@style/TransparentButton"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="8dp">-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="16dp">
+        <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_marginHorizontal="16dp">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center_vertical"-->
+        <!--                    android:orientation="horizontal"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent">-->
 
-                    <ImageView
-                        android:id="@+id/iv_profil_prediksi"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_trending_up"
-                        app:layout_constraintTop_toTopOf="parent"
+        <!--                    <ImageView-->
+        <!--                        android:id="@+id/iv_profil_prediksi"-->
+        <!--                        android:layout_width="24dp"-->
+        <!--                        android:layout_height="24dp"-->
+        <!--                        android:src="@drawable/ic_trending_up"-->
+        <!--                        app:layout_constraintTop_toTopOf="parent"-->
 
-                        />
+        <!--                        />-->
 
-                    <TextView
-                        android:id="@+id/tv_profil_prediksi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:fontFamily="@font/figtree_medium"
-                        android:text="Prediksi Donasi"
-                        android:textColor="@color/black"
-                        app:layout_constraintTop_toTopOf="parent" />
+        <!--                    <TextView-->
+        <!--                        android:id="@+id/tv_profil_prediksi"-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginStart="12dp"-->
+        <!--                        android:fontFamily="@font/figtree_medium"-->
+        <!--                        android:text="Prediksi Donasi"-->
+        <!--                        android:textColor="@color/black"-->
+        <!--                        app:layout_constraintTop_toTopOf="parent" />-->
 
-                </LinearLayout>
+        <!--                </LinearLayout>-->
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <!--                <ImageView-->
+        <!--                    android:layout_width="16dp"-->
+        <!--                    android:layout_height="16dp"-->
+        <!--                    android:src="@drawable/ic_chevron_right"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
-        </com.google.android.material.card.MaterialCardView>
+        <!--        </com.google.android.material.card.MaterialCardView>-->
         <!-- Registrasi Penerima -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_profil_regis_penerima"
@@ -252,6 +308,8 @@
 
 
         </com.google.android.material.card.MaterialCardView>
+
+
         <!-- Atur Preference -->
 
         <com.google.android.material.card.MaterialCardView

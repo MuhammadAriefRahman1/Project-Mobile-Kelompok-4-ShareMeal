@@ -1,7 +1,5 @@
 package com.kelompok_4.share_meal.home.pages
 
-import android.app.ActivityOptions
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,23 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import com.google.firebase.storage.FirebaseStorage
 import com.kelompok_4.share_meal.R
+import com.kelompok_4.share_meal.data.User
 import com.kelompok_4.share_meal.databinding.FragmentProfilBinding
+import com.kelompok_4.share_meal.helpers.DbHelpers
 import com.kelompok_4.share_meal.helpers.Helpers
 import com.kelompok_4.share_meal.home.HomeActivity
 import com.kelompok_4.share_meal.home.pages.profil.AturPreferenceActivity
+import com.kelompok_4.share_meal.home.pages.profil.AturProfilActivity
 import com.kelompok_4.share_meal.home.pages.profil.PengajuanPenerimaActivity
-import com.kelompok_4.share_meal.home.pages.profil.PrediksiDonasiActivity
 
 class ProfilFragment : Fragment() {
     private lateinit var binding: FragmentProfilBinding
-    private lateinit var dbRef: DatabaseReference
+    private lateinit var dbRef_penerima: DatabaseReference
+    private lateinit var dbRef_users: DatabaseReference
+    private lateinit var db_storage: FirebaseStorage
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +37,9 @@ class ProfilFragment : Fragment() {
         binding = FragmentProfilBinding.bind(view)
 
         // Set database reference
-        dbRef = Firebase.database.getReference("penerima")
+        dbRef_penerima = Firebase.database.getReference("penerima")
+        dbRef_users = Firebase.database.getReference("users")
+        db_storage = FirebaseStorage.getInstance()
 
         // Initialize shared preferences
         val sharedPreferences = activity?.getSharedPreferences(
@@ -47,91 +50,90 @@ class ProfilFragment : Fragment() {
         // Set the status bar color
         activity?.window?.statusBarColor = resources.getColor(R.color.colorPrimary)
 
+
         // Set Buttons
         binding.cvProfilKeluar.setOnClickListener {
             (activity as HomeActivity).logout(view.rootView)
         }
-        binding.cvProfilPrediksi.setOnClickListener {
-            startActivity(Intent(activity, PrediksiDonasiActivity::class.java))
+        binding.cvProfilAturProfil.setOnClickListener {
+            startActivity(Intent(activity, AturProfilActivity::class.java))
             Helpers.overridePendingEnterTransition(requireActivity())
         }
+//        binding.cvProfilPrediksi.setOnClickListener {
+//            startActivity(Intent(activity, PrediksiDonasiActivity::class.java))
+//            Helpers.overridePendingEnterTransition(requireActivity())
+//        }
         binding.cvProfilAturPreference.setOnClickListener {
             startActivity(Intent(activity, AturPreferenceActivity::class.java))
             Helpers.overridePendingEnterTransition(requireActivity())
         }
 
         binding.cvProfilRegisPenerima.setOnClickListener {
-            // Check if user is already registered as a penerima (by checking if the user_id is found in an existing penerima)
-            val userId = sharedPreferences?.getString("id_user", "")
+            val uid = Helpers.getUid()
 
-            dbRef.orderByChild("id_user").equalTo(userId).addListenerForSingleValueEvent(
-                object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.exists()) {
-                            for (data in snapshot.children) {
-                                if (data.child("id_user").value == userId) {
-                                    // If user is already registered as a penerima, show a toast
-                                    activity?.let { it1 ->
-                                        AlertDialog.Builder(it1)
-                                            .setTitle("Pemberitahuan")
-                                            .setMessage("Anda sudah terdaftar sebagai penerima, silahkan tunggu konfirmasi dari admin")
-                                            .setPositiveButton("OK") { dialog, which ->
-                                                dialog.dismiss()
-                                            }
-                                            .show()
-                                    }
-                                } else {
-                                    // If user is not yet registered as a penerima, navigate to the register penerima page
-                                    registerPenerima(userId.toString())
-                                }
-                            }
+            DbHelpers.fetchSingleDataByCondition("penerima", Pair("id_user", uid)) { penerima ->
+                // Check if user is already registered as a penerima
+                if (penerima != null && penerima.exists()) {
+                    Helpers.makeAlertDialog(
+                        requireActivity(),
+                        "Pemberitahuan",
+                        "Anda sudah terdaftar sebagai penerima, silahkan tunggu konfirmasi dari admin"
+                    )
+                } else {
+                    // Check if user has completed their profile
+                    DbHelpers.fetchSingleDataByPath("users/$uid") { db_user ->
+                        val user = db_user!!.getValue(User::class.java)!!
+
+                        if (user.alamat == "" || user.no_hp == "" || user.alamat == "") {
+                            Helpers.makeAlertDialog(
+                                requireActivity(),
+                                "Pemberitahuan",
+                                "Silahkan lengkapi profil anda terlebih dahulu"
+                            )
                         } else {
                             // If user is not yet registered as a penerima, navigate to the register penerima page
-                            registerPenerima(userId.toString())
+                            registerPenerima()
                         }
                     }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        // Do nothing
-                    }
+
                 }
-            )
+            }
 
         }
 
+        DbHelpers.fetchSingleDataByPath("users/${Helpers.getUid()}") {
+            val user = it!!.getValue(User::class.java)!!
+            binding.tvProfilNama.text = user.nama_lengkap
+            binding.tvProfilRole.text = user.role
 
-        // Set profile
-        sharedPreferences?.getString("nama_lengkap", "User")?.let {
-            binding.tvProfilNama.text = it
+            // Get profile picture without helpers
+            if (user.profile_picture != "") {
+                Glide.with(view)
+                    .load(user.profile_picture)
+                    .into(binding.civProfil)
+            }
+
+            // Set Role Specific Buttons
+
+            if (user.role == "Donatur") {
+                binding.cvProfilRegisPenerima.visibility = View.VISIBLE
+                binding.cvProfilAturPreference.visibility = View.GONE
+            } else if (user.role == "Penerima") {
+                binding.cvProfilRegisPenerima.visibility = View.GONE
+                binding.cvProfilAturPreference.visibility = View.VISIBLE
+            }
         }
 
-        sharedPreferences?.getString("role", "User")?.let {
-            binding.tvProfilRole.text = it
-        }
-
-        // Set Role Specific Buttons
-        var role = sharedPreferences?.getString("role", "User")
-        if (role == "Donatur") {
-            binding.cvProfilRegisPenerima.visibility = View.VISIBLE
-        } else if (role == "Penerima") {
-            binding.cvProfilRegisPenerima.visibility = View.GONE
-        }
-
-
-        // Return the fragment view/layout
         return view
+
     }
 
-    fun registerPenerima(userId: String) {
+    fun registerPenerima() {
         val intent = Intent(activity, PengajuanPenerimaActivity::class.java)
-        val options = ActivityOptions
-            .makeCustomAnimation(
-                requireContext(),
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
-        intent.putExtra("id_user", userId)
-        startActivity(intent, options.toBundle())
+        intent.putExtra("id_user", Helpers.getUid())
+        startActivity(intent)
+        Helpers.overridePendingEnterTransition(requireActivity())
     }
 
 }
